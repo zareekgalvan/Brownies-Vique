@@ -1,0 +1,21 @@
+.imageLogo {
+	max-width:45px; 
+	margin-top: -13px; 
+	border-radius: 25%;
+}
+
+.jumbotron{
+	background: #1b222a url(../img/browniesvique.jpg) no-repeat top center;
+	background-size: 500px;
+	color:#fff;
+	height:500px;
+	overflow:none;
+}
+
+body {
+	background: #fff;
+}
+
+.auto-resize {
+	width: 100%;
+}
