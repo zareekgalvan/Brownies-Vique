@@ -13,9 +13,42 @@
 }
 
 body {
-	background: #fff;
+	background: #f7f7f7;
 }
 
 .auto-resize {
 	width: 100%;
+}
+
+.text-muted {
+	display: block;
+	float: left;
+
+	margin-bottom: 0px;
+}
+
+.text-right {
+	color: #3b5998;
+	vertical-align: middle;
+}
+
+.abajo {
+	background-image: -webkit-linear-gradient(top, #3c3c3c 0%, #222 100%);
+  	background-image:      -o-linear-gradient(top, #3c3c3c 0%, #222 100%);
+  	background-image: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), to(#222));
+  	background-image:         linear-gradient(to bottom, #3c3c3c 0%, #222 100%);
+  	margin-bottom: 0px;
+
+}
+
+.container-fluid {
+	align-items: center;
+	alignment-baseline: central;
+}
+
+
+@media(max-width: 525px){
+	.text-right {
+		margin: 3% 0 1% 0;
+	}
 }
