@@ -5,15 +5,27 @@
 }
 
 .jumbotron{
-	background: #1b222a url(../img/browniesvique.jpg) no-repeat top center;
+	background: #fff url(../img/browniesvique.jpg) no-repeat top center;
 	background-size: 500px;
 	color:#fff;
 	height:500px;
 	overflow:none;
 }
 
+.titulos {
+	font-family: 'Pacifico', cursive;
+	font-size: 100px;
+}
+
 body {
 	background: #f7f7f7;
+	background: #fff;
+}
+
+
+
+#middle {
+	padding-top: 50px;
 }
 
 .auto-resize {
@@ -21,15 +33,36 @@ body {
 }
 
 .text-muted {
-	display: block;
-	float: left;
+	margin: 0px;
+}
 
-	margin-bottom: 0px;
+.col-md-4{
+	margin-bottom:20px;
+}
+
+img.demo{
+	width:100%;
+	padding:3px;
+	border: 1px solid #ccc;
+}
+
+.comprar {
+	cursor: pointer; 
+    color: white;
+    background: #222;
+    border: 0;
+    padding: 5px 15px;
+    font-size: 1.3em;
+}
+
+.bottom {
+	bottom: 0;
 }
 
 .text-right {
 	color: #3b5998;
 	vertical-align: middle;
+	font-size: 200%;
 }
 
 .abajo {
@@ -38,7 +71,6 @@ body {
   	background-image: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), to(#222));
   	background-image:         linear-gradient(to bottom, #3c3c3c 0%, #222 100%);
   	margin-bottom: 0px;
-
 }
 
 .container-fluid {
@@ -46,9 +78,20 @@ body {
 	alignment-baseline: central;
 }
 
+.col-md-4 > h2, .col-md-4 > p {
+	text-align: center;
+}
+
+span {
+  vertical-align: middle;
+  line-height: normal;      
+}
 
 @media(max-width: 525px){
 	.text-right {
-		margin: 3% 0 1% 0;
+		margin: 0% 0 0% 0;
+	}
+	.titulos {
+		font-size: 70px;
 	}
 }
