@@ -5,15 +5,20 @@
 }
 
 .jumbotron{
-	background: #fff url(../img/browniesvique.jpg) no-repeat top center;
-	background-size: 500px;
-	color:#fff;
-	height:500px;
-	overflow:none;
+	background: #3c3c3c no-repeat top center;
+	background-size: auto;
+	color: #fff;
+	overflow: none;
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	font-size: 20px;
 }
 
 .titulos {
-	font-family: 'Pacifico', cursive;
+	font-family: 'Yellowtail', cursive;
 	font-size: 100px;
 }
 
@@ -59,6 +64,16 @@ img.demo{
 	bottom: 0;
 }
 
+.decor {
+
+	border-radius: 25px;
+	border-color: black;
+	border: 3px solid #222;
+	margin-bottom: 10px;
+	min-height: 70px;
+	position: relative;
+}
+
 .text-right {
 	color: #3b5998;
 	vertical-align: middle;
@@ -80,6 +95,11 @@ img.demo{
 
 .col-md-4 > h2, .col-md-4 > p {
 	text-align: center;
+}
+
+.center {
+	text-align: center;
+		max-width: 50%;
 }
 
 span {
