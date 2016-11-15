@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Brownies Vique</title>
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css">
@@ -15,6 +15,8 @@
   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
   crossorigin="anonymous"></script>
   <script src="../js/bootstrap.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico|Yellowtail" rel="stylesheet">
+  <script src="../js/browniesvique.js"></script>
 </head>
 
 <body>
@@ -47,24 +49,57 @@
     </nav>
     <!-- NAVBAR END -->
 
+  <section>
+    <div class="text-center">
+      <h1 class="titulos">¡Registrate con nosotros!</h1>
+    </div>  
+  </section>
 
 
+  <section id="middle">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <form>
+            <div class="form-group">
+              <label for="usermame">Usuario:</label>
+              <input type="text" class="form-control" id="usermame" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="name">Nombre completo:</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="Semail">Email:</label>
+              <input type="email" class="form-control" id="Semail" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Contraseña:</label>
+              <input type="password" class="form-control" id="Spwd" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+              <label for="Spwd">Confirmar contraseña:</label>
+              <input type="password" class="form-control" id="Spwd2" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-default btn-block comprar">Registrarse</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- FOOTER -->
-  <footer class="panel panel-footer abajo">
-      <div class="container-fluid">
-        <div class="row row-footer">
-          <p class="text-muted col-xs-10"><span>Todos los derechos reservados a Brownies Vique Sa de CV®</span></p>
-          <div class="text-right col-xs-2">
-              <a href="https://www.facebook.com/BrowniesVique/"><i class="fa fa-facebook-official text-muted" aria-hidden="true"></i></a>
-          </div>
-          
-        </div>
-          
-        </div>
+  <footer class="panel panel-footer abajo footer">
+    <div class="container-fluid">
+     <div class="row row-footer">
+      <p class="text-muted col-xs-10 p14"><span>Todos los derechos reservados a Brownies Vique Sa de CV®</span></p>
+      <div class="text-right col-xs-2">
+        <a href="https://www.facebook.com/BrowniesVique/"><i class="fa fa-facebook-official text-muted" aria-hidden="true"></i></a>
       </div>
-    </footer>
-    <!-- FOOTER END -->
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
 </body>
 </html>

@@ -35,12 +35,14 @@ p {
 body {
 	background: #f7f7f7;
 	background: #fff;
+	height: 100%
 }
 
 
 
 #middle {
 	padding-top: 50px;
+	padding-bottom: 30px;
 }
 
 .auto-resize {
@@ -96,6 +98,13 @@ img.demo{
 	color: #3b5998;
 	vertical-align: middle;
 	font-size: 200%;
+}
+.wrap {
+	min-height: 100%;
+    height: auto !important;
+  	height: 100%;
+	/* Negative indent footer by it's height */
+ 	margin: 0 auto -60px;
 }
 
 .abajo {

@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Brownies Vique</title>
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css">
@@ -15,56 +15,81 @@
   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
   crossorigin="anonymous"></script>
   <script src="../js/bootstrap.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico|Yellowtail" rel="stylesheet">
+  <script src="../js/browniesvique.js"></script>
 </head>
 
 <body>
-
   <!-- NAVBAR -->
   <nav class="navbar navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand em-text" href="index.html"><img class="imageLogo active" src="../img/browniesviquesquare.jpg"></a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="productos.html">Productos</a></li>
-            <li><a href="comentarios.html">Comentarios</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="signup.html">Registrarse</a></li>
-            <li class="active"><a href="login.html">Iniciar sesión</a></li>
-            <li><a href="kart.html">Carrito</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand em-text" href="index.html"><img class="imageLogo active" src="../img/browniesviquesquare.jpg"></a>
       </div>
-    </nav>
-    <!-- NAVBAR END -->
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="comentarios.html">Comentarios</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="signup.html">Registrarse</a></li>
+          <li class="active"><a href="login.html">Iniciar sesión</a></li>
+          <li><a href="kart.html">Carrito</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <!-- NAVBAR END -->
 
+  <section>
+    <div class="text-center">
+      <h1 class="titulos">¡Inicia sesión!</h1>
+    </div>  
+  </section>
 
-
+  <section id="middle">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <form>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="lemail" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input type="password" class="form-control" id="lpwd" placeholder="Enter password">
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox">Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-default btn-block comprar">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- FOOTER -->
   <footer class="panel panel-footer abajo">
-      <div class="container-fluid">
-        <div class="row row-footer">
-          <p class="text-muted col-xs-10"><span>Todos los derechos reservados a Brownies Vique Sa de CV®</span></p>
-          <div class="text-right col-xs-2">
-              <a href="https://www.facebook.com/BrowniesVique/"><i class="fa fa-facebook-official text-muted" aria-hidden="true"></i></a>
-          </div>
-          
-        </div>
-          
-        </div>
+    <div class="container-fluid">
+     <div class="row row-footer">
+      <p class="text-muted col-xs-10 p14"><span>Todos los derechos reservados a Brownies Vique Sa de CV®</span></p>
+      <div class="text-right col-xs-2">
+        <a href="https://www.facebook.com/BrowniesVique/"><i class="fa fa-facebook-official text-muted" aria-hidden="true"></i></a>
       </div>
-    </footer>
-    <!-- FOOTER END -->
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+
 </body>
 </html>
