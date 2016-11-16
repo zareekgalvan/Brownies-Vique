@@ -18,7 +18,7 @@
 			break;
 
 		case 'REGISTER':
-			//registerUser();
+			registerUser();
 			break;
 
 		case 'CONTACT':
@@ -26,7 +26,13 @@
 			break;
 	}
 
-
+	function registerUser()
+	{
+		$name = $_POST["name"];
+		$mail = $_POST["email"];
+		$pass = encryptPassword();
+		echo json_encode(array("status" => $pass));
+	}
 
 
 	function sendContactMessage()
@@ -83,7 +89,7 @@
 
 	function encryptPassword()
 	{
-		$userPassword = $_POST["password"];
+		$userPassword = $_POST["pass"];
 
 	    $key = pack('H*', "bcb04b7e103a05afe34763051cef08bc55abe029fdebae5e1d417e2ffb2a00a3");
 	    $key_size =  strlen($key);

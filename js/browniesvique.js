@@ -1,6 +1,43 @@
 $(document).ready(function() {
     //Sign up
-
+    $("#register").click(function(){
+        event.preventDefault();
+        if($("#sname").val() != "" && $("#semail").val() != "" && $("#spwd").val() != "" && $("#spwd2").val() != "")
+        {
+            if ($("#spwd").val() != $("#spwd2").val())
+            {
+                alert("Las contraseñas no coinciden");
+            }
+            else
+            {
+                var jsonData = {
+                    "action" : 'REGISTER',
+                    "name" : $("#sname").val(),
+                    "email" : $("#semail").val(),
+                    "pass" : $("#spwd").val()
+                };
+                $.ajax({
+                    url : "http://localhost:8888/BrowniesVique/data/applicationLayer.php",
+                    type : "POST",
+                    data : jsonData,
+                    dataType : "json",
+                    contentType : "application/x-www-form-urlencoded",
+                    success: function(jsonResponse){
+                        alert("Bienvenido");
+                        console.log(jsonResponse.status);
+                    },
+                    error : function(errorMessage){
+                        alert("No ha sido posible registrarlo,\nintente de nuevo.");
+                    }
+                });
+            }  
+        }
+        else 
+        {
+            alert("Por favor llene todos los campos");
+        }
+        event.stopPropagation();
+    });
 
 
 
