@@ -32,7 +32,7 @@
 	function sendContactMessage()
 	{
 		$name = $_POST["name"];
-		$mail = $_POST["mail"];
+		$mail = $_POST["email"];
 		$comment = $_POST["comment"];
 		$to = "browniesvique@gmail.com";
 		$from = "Contacto";
@@ -41,7 +41,8 @@
 
 		if (mail($to, $subject, $body, $from))
 		{
-			echo json_encode(array("status" => "SUCCESS"));
+			$result = tryPostContactMsg($mail, $name, $comment);
+			echo json_encode($result);
 		}
 		else
 		{

@@ -50,9 +50,6 @@ $(document).ready(function() {
                     alert("Por el momento no ha sido posible enviar su mensaje,\nintente de nuevo.");
                 }
             });
-
-
-            
         }
         else 
         {
