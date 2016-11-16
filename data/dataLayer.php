@@ -15,10 +15,36 @@
 		}
 	}
 
+	function tryRegisterUser($name, $mail, $pass)
+	{
+		$conn = connectionToDataBase();
+		if ($conn)
+		{
+			$sql = "INSERT INTO User (name, email, pass) VALUES ('$name', '$mail', '$pass')";
+			
+			$result = $conn->query($sql);
+
+			if ($result)
+			{
+				return array("status" => "SUCCESS");
+			}
+			else
+			{
+				return array("status" => "EXISTS");
+			}
+		}
+		else 
+		{
+			$conn -> close();
+			return array("status" => "CONNECTION WITH DB WENT WRONG");
+		}
+	}
+
 	function tryPostContactMsg($mail, $name, $comment)
 	{
 		$conn = connectionToDataBase();
-		if ($conn != null){
+		if ($conn != null)
+		{
 			$sql = "INSERT INTO ContactMsgs (mail, name, body) 
 					VALUES ('$mail', '$name', '$comment')";
 			$result = $conn->query($sql);
@@ -33,7 +59,8 @@
 			}
 		}
 		
-		else {
+		else 
+		{
 			$conn -> close();
 			return array("status" => "CONNECTION WITH DB WENT WRONG");
 		}

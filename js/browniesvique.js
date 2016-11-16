@@ -23,11 +23,13 @@ $(document).ready(function() {
                     dataType : "json",
                     contentType : "application/x-www-form-urlencoded",
                     success: function(jsonResponse){
-                        alert("Bienvenido");
-                        console.log(jsonResponse.status);
+                        if (jsonResponse.status == "EXISTS")
+                        {
+                            alert("El email que escribiste ya esta en uso, porfavor selecciona otro.")
+                        }
                     },
                     error : function(errorMessage){
-                        alert("No ha sido posible registrarlo,\nintente de nuevo.");
+                        alert("No ha sido posible registrarlo, intente de nuevo.");
                     }
                 });
             }  
@@ -80,11 +82,11 @@ $(document).ready(function() {
                 dataType : "json",
                 contentType : "application/x-www-form-urlencoded",
                 success: function(jsonResponse){
-                    alert("Se ha enviado su duda/mensaje, \n¡Muchas gracias!");
+                    alert("Se ha enviado su duda/mensaje, ¡Muchas gracias!");
                     console.log(jsonResponse.status);
                 },
                 error : function(errorMessage){
-                    alert("Por el momento no ha sido posible enviar su mensaje,\nintente de nuevo.");
+                    alert("Por el momento no ha sido posible enviar su mensaje, intente de nuevo.");
                 }
             });
         }

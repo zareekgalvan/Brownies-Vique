@@ -31,7 +31,12 @@
 		$name = $_POST["name"];
 		$mail = $_POST["email"];
 		$pass = encryptPassword();
-		echo json_encode(array("status" => $pass));
+
+		$result = tryRegisterUser($name, $mail, $pass);
+
+
+
+		echo json_encode($result);
 	}
 
 
