@@ -2,6 +2,7 @@ $(document).ready(function()
 {
     //General
     loadComs();
+    loadPastOrders();
     console.log("Ready");
     if ($.session.get("name") != null)
     {
