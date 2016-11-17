@@ -77,6 +77,38 @@
 			return array("status" => "CONNECTION WITH DB WENT WRONG");
 		}
 	}
+	function tryGetComments()
+	{
+		$conn = connectionToDataBase();
+		if ($conn)
+		{
+			$sql = "SELECT User.id as id, User.name as name, User.email as email, Comment.body as body, Comment.dateCom as dateCom
+				FROM Comment
+				JOIN User
+					ON User.id = Comment.userid";
+			
+			$result = $conn->query($sql);
+
+			if ($result->num_rows > 0)
+			{
+				$response = array();
+				while ($row = $result->fetch_assoc())
+				{
+					$response[] = array("date" => $row["dateCom"], "name" => $row["name"], "body" => $row["body"]);
+				}
+				return $response;
+			}
+			else
+			{
+				return array("status" => "NOT COMMENTS");
+			}
+		}
+		else 
+		{
+			$conn -> close();
+			return array("status" => "CONNECTION WITH DB WENT WRONG");
+		}
+	}
 
 	function tryRegisterUser($name, $mail, $pass)
 	{

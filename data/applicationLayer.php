@@ -9,8 +9,8 @@
 			loginUser();
 			break;
 		
-		case 'COMMENTS':
-			//getComments();
+		case 'LOAD':
+			getComments();
 			break;
 
 		case 'POST':
@@ -67,6 +67,18 @@
 		$result = tryPostCom($name, $body);
 		echo json_encode($result);
 	}
+
+	function getComments()
+	{
+		$result = tryGetComments();
+		if ($result) {
+			echo json_encode($result);
+		}
+		else
+		{
+			header('HTTP/1.1 500' . $result["status"]);
+			die($result["status"]);
+		}	}
 
 
 	function sendContactMessage()

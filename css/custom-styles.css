@@ -84,6 +84,15 @@ img.demo{
 	min-height: 70px;
 	position: relative;
 }
+.decor-coms {
+	border-radius: 5px;
+	border-color: black;
+	border: 3px solid #222;
+	margin-bottom: 10px;
+	min-height: 70px;
+	position: relative;
+	padding: 10px;
+}
 
 .decor-inverse {
 	margin-top: 10px;

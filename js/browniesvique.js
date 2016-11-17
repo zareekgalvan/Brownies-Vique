@@ -1,6 +1,7 @@
 $(document).ready(function() 
 {
     //General
+    loadComs();
     console.log("Ready");
     if ($.session.get("name") != null)
     {
@@ -172,6 +173,39 @@ $(document).ready(function()
             window.location.replace("../BrowniesVique/login.html");
         }
     });
+
+    function loadComs() {
+        var jsonData = 
+        {
+            "action" : "LOAD"
+        }
+
+        $.ajax(
+        {
+            url : "http://localhost:8888/BrowniesVique/data/applicationLayer.php",
+            type : "POST",
+            data : jsonData,
+            dataType : "json",
+            contentType : "application/x-www-form-urlencoded",
+            success: function(jsonResponse)
+            {
+                var newHTMLContent = "";
+                for (var element in jsonResponse) {
+                    newHTMLContent += "<div class='decor-coms'>" + jsonResponse[element].date;
+                    newHTMLContent += "<p class='p16'><span>" + jsonResponse[element].name + "</span></p>";
+                    newHTMLContent += jsonResponse[element].body;
+                    newHTMLContent += "</div><hr>";
+                    $("#coms").prepend(newHTMLContent);
+                    newHTMLContent = "";
+                }
+                
+            },
+            error : function(errorMessage)
+            {
+                console.log("No se cargaron los comentarios");
+            }
+        });
+    }
 
 
 
