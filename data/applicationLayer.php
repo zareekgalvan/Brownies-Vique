@@ -13,8 +13,8 @@
 			//getComments();
 			break;
 
-		case 'POSTCOMM':
-			//postComm();
+		case 'POST':
+			postComm();
 			break;
 
 		case 'REGISTER':
@@ -56,6 +56,15 @@
 
 		$result = tryRegisterUser($name, $mail, $pass);
 
+		echo json_encode($result);
+	}
+
+	function postComm()
+	{
+		$name = $_POST["name"];
+		$body = $_POST["body"];
+
+		$result = tryPostCom($name, $body);
 		echo json_encode($result);
 	}
 

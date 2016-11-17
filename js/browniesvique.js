@@ -18,7 +18,8 @@ $(document).ready(function()
     $("#cs").click(function()
     {
         $.session.remove("name");
-        window.location.reload();
+        window.location.replace("../BrowniesVique/index.html");
+
     });
 
 
@@ -130,7 +131,47 @@ $(document).ready(function()
 
 
     //Comentarios
+    $("#comentar").click(function()
+    {
+        event.preventDefault();
+        if ($("#comment").val() == "") 
+        {
+            alert("Escriba su comentario");
+        }
+        else if ($.session.get("name") != null)
+        {
+            var jsonData = 
+            {
+                "action" : "POST",
+                "name" : $.session.get("name"),
+                "body" : $("#comment").val()
+            };
 
+            $.ajax(
+            {
+                url : "http://localhost:8888/BrowniesVique/data/applicationLayer.php",
+                type : "POST",
+                data : jsonData,
+                dataType : "json",
+                contentType : "application/x-www-form-urlencoded",
+                success: function(jsonResponse)
+                {
+                    alert("Se ha posteado su comentario");
+                    console.log(jsonResponse.status);
+                    window.location.replace("../BrowniesVique/comentarios.html");
+                },
+                error : function(errorMessage)
+                {
+                    alert("Por el momento no ha sido posible enviar su mensaje, intente de nuevo.");
+                }
+            });
+        }
+        else
+        {
+            alert("Primero tiene que iniciar sesión");
+            window.location.replace("../BrowniesVique/login.html");
+        }
+    });
 
 
 
