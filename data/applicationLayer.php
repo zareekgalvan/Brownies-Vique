@@ -28,6 +28,10 @@
 		case 'ORDER':
 			postOrder();
 			break;
+
+		case 'PAST_ORDER':
+			getPastOrders();
+			break;
 	}
 
 	function loginUser()
@@ -91,7 +95,21 @@
 		{
 			header('HTTP/1.1 500' . $result["status"]);
 			die($result["status"]);
-		}	}
+		}	
+	}
+
+	function getPastOrders()
+	{
+		$result = tryGetPastOrders();
+		if ($result) {
+			echo json_encode($result);
+		}
+		else
+		{
+			header('HTTP/1.1 500' . $result["status"]);
+			die($result["status"]);
+		}	
+	}
 
 
 	function sendContactMessage()

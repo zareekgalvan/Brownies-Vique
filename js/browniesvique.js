@@ -10,10 +10,16 @@ $(document).ready(function()
         $("#su").remove();
         $("#li").remove();
         $(".navbar-right").prepend( "<li><a id='cs'>Cerrar sesión</a></li>" );
+
+        loadPastOrders();
     }
     else
     {
         console.log("not set");
+        var newHTMLContent = "<div class='decor-coms'>";
+        newHTMLContent += "<pre class='p16'><span>" + "Para ver tus ordenes previas, necesitas iniciar sesión" + "</span></pre>";
+        newHTMLContent += "</div><hr>";
+        $("#pOrders").prepend(newHTMLContent);
     }
 
     $("#cs").click(function()
@@ -271,49 +277,56 @@ $(document).ready(function()
 
     $("#buy").click(function() 
     {
-        if($(".decor-coms").length > 0)
+        if ($.session.get("name") != null)
         {
-            var str = "";
-            $(".decor-coms").each(function(){
-                str+= $(this).children(".brownie").children(".item").children(".tipo").children(".tipob").val() + " x";
-                str+= $(this).children(".brownie").children(".item").children(".numb").children(".form-group").children(".num").val() + "\n";
-
-                
-            });
-            console.log(str);
-            var jsonData = {
-                "action" : "ORDER",
-                "name" : $.session.get("name"),
-                "body" : str
-            };
-            $.ajax(
+            if($(".decor-coms").length > 0)
             {
-                url : "http://localhost:8888/BrowniesVique/data/applicationLayer.php",
-                type : "POST",
-                data : jsonData,
-                dataType : "json",
-                contentType : "application/x-www-form-urlencoded",
-                success: function(jsonResponse)
+                var str = "";
+                $(".decor-coms").each(function(){
+                    str+= $(this).children(".brownie").children(".item").children(".tipo").children(".tipob").val() + " x";
+                    str+= $(this).children(".brownie").children(".item").children(".numb").children(".form-group").children(".num").val() + "\n";
+
+
+                });
+                console.log(str);
+                var jsonData = {
+                    "action" : "ORDER",
+                    "name" : $.session.get("name"),
+                    "body" : str
+                };
+                $.ajax(
                 {
-                    console.log(jsonResponse);
-                    if (jsonResponse.status != "POSTED")
+                    url : "http://localhost:8888/BrowniesVique/data/applicationLayer.php",
+                    type : "POST",
+                    data : jsonData,
+                    dataType : "json",
+                    contentType : "application/x-www-form-urlencoded",
+                    success: function(jsonResponse)
                     {
-                        alert("No se pudo procesar tu orden en este momento");
-                    }
-                    else
+                        console.log(jsonResponse);
+                        if (jsonResponse.status != "POSTED")
+                        {
+                            alert("No se pudo procesar tu orden en este momento");
+                        }
+                        else
+                        {
+                            modal.style.display = "block";
+                        }
+                    },
+                    error : function(errorMessage)
                     {
-                        modal.style.display = "block";
+                        alert("No se pudo procesar tu orden");
                     }
-                },
-                error : function(errorMessage)
-                {
-                    alert("No se pudo procesar tu orden");
-                }
-            });
+                });
+            }
+            else
+            {
+                alert("Necesitas agregar brownies para poder proceder");
+            }
         }
         else
         {
-            alert("Necesitas agregar brownies para poder proceder");
+            alert("Necesitas iniciar sesiñon para poder proceder");
         }
     });
 
@@ -362,4 +375,36 @@ $(document).ready(function()
 
 
     //Ordenes pasadas
+    function loadPastOrders() {
+        var jsonData = 
+        {
+            "action" : "PAST_ORDER"
+        }
+
+        $.ajax(
+        {
+            url : "http://localhost:8888/BrowniesVique/data/applicationLayer.php",
+            type : "POST",
+            data : jsonData,
+            dataType : "json",
+            contentType : "application/x-www-form-urlencoded",
+            success: function(jsonResponse)
+            {
+                var newHTMLContent = "";
+                for (var element in jsonResponse) {
+                    newHTMLContent += "<div class='decor-coms'>" + jsonResponse[element].date;
+                    newHTMLContent += "<pre class='p16'><span>" + jsonResponse[element].body + "</span></pre>";
+                    newHTMLContent += "</div><hr>";
+                    $("#pOrders").prepend(newHTMLContent);
+                    newHTMLContent = "";
+                }
+                
+            },
+            error : function(errorMessage)
+            {
+                console.log("No se cargaron los comentarios");
+            }
+        });
+    }
+
 });
