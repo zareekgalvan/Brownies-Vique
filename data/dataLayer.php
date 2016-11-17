@@ -15,6 +15,32 @@
 		}
 	}
 
+	function tryLoginUser($mail, $pass)
+	{
+		$conn = connectionToDataBase();
+		if ($conn)
+		{
+			$sql = "SELECT * FROM User WHERE email = '$mail'";
+			
+			$result = $conn->query($sql);
+
+			if ($result->num_rows > 0)
+			{
+				$row = $result->fetch_assoc();
+				return array("status" => "SUCCESS", "name" => $row["name"], "mail" => $row["email"], "pass" => $row["pass"]);
+			}
+			else
+			{
+				return array("status" => "NOT EXISTS");
+			}
+		}
+		else 
+		{
+			$conn -> close();
+			return array("status" => "CONNECTION WITH DB WENT WRONG");
+		}
+	}
+
 	function tryRegisterUser($name, $mail, $pass)
 	{
 		$conn = connectionToDataBase();
@@ -26,7 +52,7 @@
 
 			if ($result)
 			{
-				return array("status" => "SUCCESS");
+				return array("status" => "SUCCESS", "name" => $name, "mail" => $mail);
 			}
 			else
 			{

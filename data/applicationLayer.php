@@ -6,7 +6,7 @@
 
 	switch ($action) {
 		case 'LOGIN':
-			//loginFunc();
+			loginUser();
 			break;
 		
 		case 'COMMENTS':
@@ -26,6 +26,28 @@
 			break;
 	}
 
+	function loginUser()
+	{
+		$mail = $_POST["email"];
+		$pass = $_POST["pass"];
+
+		$result = tryLoginUser($mail, $pass);
+
+		if($result["status"] == "SUCCESS")
+		{
+			if ($pass === decryptPassword($result["pass"]))
+			{
+				echo json_encode($result);
+			}
+		}
+		else
+		{
+			header('HTTP/1.1 500' . $result["status"]);
+			die($result["status"]);
+		}
+		
+	}
+
 	function registerUser()
 	{
 		$name = $_POST["name"];
@@ -33,8 +55,6 @@
 		$pass = encryptPassword();
 
 		$result = tryRegisterUser($name, $mail, $pass);
-
-
 
 		echo json_encode($result);
 	}
