@@ -59,9 +59,51 @@
   <section>
     <div class="container">
       <div class="row">
-        <div class="col-md-offset-5 col-md-2 col xs-2">
+        <div class="col-md-6 col-md-offset-3" id="products">
+          
+          <div class="decor-coms">
+            <div class="form-group brownie">
+              <label>Selecciona el brownie a pedir:</label>
+              <div class="row item">
+                <div class="col-md-10 col-xs-9 tipo">
+                  <select class="form-control tipob">
+                    <option>Cheesecake</option>
+                    <option>Walnut</option>
+                    <option>Sprinkles</option>
+                    <option>Sugar Glass</option>
+                    <option>White chocolate</option>
+                  </select>
+                </div>
+                <div class="col-md-2 col-xs-3 numb">
+                  <div class="form-group">
+                    <input type="number" class="form-control num" min="1" value="1">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-offset-3 col-md-6">
+                  <div class="bottom">
+                    <a class="btn btn-default btn-block comprar" id="quitar"><i class="glyphicon glyphicon-minus"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-5 col-md-2">
           <div class="bottom">
-            <a class="btn btn-default btn-block comprar"><i class="glyphicon glyphicon-plus"></i></a>
+            <a class="btn btn-default btn-block comprar" id="agregar"><i class="glyphicon glyphicon-plus"></i></a>
+          </div>
+          <div class="bottom">
+            <button class="btn btn-default btn-block comprar" id="buy">Comprar</button>
           </div>
         </div>
       </div>

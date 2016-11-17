@@ -6,7 +6,7 @@ $(document).ready(function()
     if ($.session.get("name") != null)
     {
         console.log($.session.get("name"));
-        $(".user").append("<li><a> ¡Hola " + $.session.get("name") + "!</a></li>");
+        $(".user").append("<li><a href='pastorders.html'> ¡Hola " + $.session.get("name") + "!</a></li>");
         $("#su").remove();
         $("#li").remove();
         $(".navbar-right").prepend( "<li><a id='cs'>Cerrar sesión</a></li>" );
@@ -210,7 +210,57 @@ $(document).ready(function()
 
 
     //Kart
+    $("#agregar").click(function()
+    {
+        var newGroup = "<div class='decor-coms'>";
+        newGroup += "<div class='form-group brownie'>";
+        newGroup += "<label>Selecciona el brownie a pedir:</label>";
+        newGroup += "<div class='row item'>";
+        newGroup += "<div class='col-md-10 col-xs-9 tipo'>";
+        newGroup += "<select class='form-control tipob'>";
+        newGroup += "<option>Cheesecake</option>";
+        newGroup += "<option>Walnut</option>";
+        newGroup += "<option>Sprinkles</option>";
+        newGroup += "<option>Sugar Glass</option>";
+        newGroup += "<option>White chocolate</option>";
+        newGroup += "</select>";
+        newGroup += "</div>";
+        newGroup += "<div class='col-md-2 col-xs-3 numb'>";
+        newGroup += "<div class='form-group'>";
+        newGroup += "<input type='number' class='form-control num' min='1' value='1'>";
+        newGroup += "</div>";
+        newGroup += "</div>";
+        newGroup += "</div>";
+        newGroup += "<div class='row'>";
+        newGroup += "<div class='col-md-offset-3 col-md-6'>";
+        newGroup += "<div class='bottom'>";
+        newGroup += "<a class='btn btn-default btn-block comprar' id='quitar'><i class='glyphicon glyphicon-minus'></i></a>";
+        newGroup += "</div>";
+        newGroup += "</div>";
+        newGroup += "</div>";
+        newGroup += "</div>";
+        newGroup += "</div>";
+        $("#products").append(newGroup);
+    });
 
+    $("#quitar").click(function() 
+    {
+        var last = $(".decor-coms").last();
+        last.remove();
+    });
+
+    $("#buy").click(function() 
+    {
+        console.log($(".decor-coms").length);
+        var str = "";
+        $(".decor-coms").each(function(){
+            str+= $(this).children(".brownie").children(".item").children(".tipo").children(".tipob").val() + " x";
+            str+= $(this).children(".brownie").children(".item").children(".numb").children(".form-group").children(".num").val() + "\n";
+            
+                
+        });
+        console.log(str);
+    });
 
 
 
