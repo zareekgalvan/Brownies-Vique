@@ -2,7 +2,6 @@ $(document).ready(function()
 {
     //General
     loadComs();
-    loadPastOrders();
     console.log("Ready");
     if ($.session.get("name") != null)
     {
@@ -18,7 +17,7 @@ $(document).ready(function()
     {
         console.log("not set");
         var newHTMLContent = "<div class='decor-coms'>";
-        newHTMLContent += "<pre class='p16'><span>" + "Para ver tus ordenes previas, necesitas iniciar sesión" + "</span></pre>";
+        newHTMLContent += "<p class='p16 text-center'><span>" + "Para ver tus ordenes previas, necesitas iniciar sesión" + "</span></p>";
         newHTMLContent += "</div><hr>";
         $("#pOrders").prepend(newHTMLContent);
     }
