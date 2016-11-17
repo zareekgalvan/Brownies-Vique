@@ -249,18 +249,75 @@ $(document).ready(function()
         last.remove();
     });
 
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("comment");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
     $("#buy").click(function() 
     {
-        console.log($(".decor-coms").length);
-        var str = "";
-        $(".decor-coms").each(function(){
-            str+= $(this).children(".brownie").children(".item").children(".tipo").children(".tipob").val() + " x";
-            str+= $(this).children(".brownie").children(".item").children(".numb").children(".form-group").children(".num").val() + "\n";
-            
+        if($(".decor-coms").length > 0)
+        {
+            var str = "";
+            $(".decor-coms").each(function(){
+                str+= $(this).children(".brownie").children(".item").children(".tipo").children(".tipob").val() + " x";
+                str+= $(this).children(".brownie").children(".item").children(".numb").children(".form-group").children(".num").val() + "\n";
+
                 
-        });
-        console.log(str);
+            });
+            console.log(str);
+            var jsonData = {
+                "action" : "ORDER",
+                "name" : $.session.get("name"),
+                "body" : str
+            };
+            $.ajax(
+            {
+                url : "http://localhost:8888/BrowniesVique/data/applicationLayer.php",
+                type : "POST",
+                data : jsonData,
+                dataType : "json",
+                contentType : "application/x-www-form-urlencoded",
+                success: function(jsonResponse)
+                {
+                    console.log(jsonResponse);
+                    if (jsonResponse.status != "POSTED")
+                    {
+                        alert("No se pudo procesar tu orden en este momento");
+                    }
+                    else
+                    {
+                        modal.style.display = "block";
+                    }
+                },
+                error : function(errorMessage)
+                {
+                    alert("No se pudo procesar tu orden");
+                }
+            });
+        }
+        else
+        {
+            alert("Necesitas agregar brownies para poder proceder");
+        }
     });
+
+
 
 
 

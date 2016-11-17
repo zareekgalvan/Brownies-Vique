@@ -24,6 +24,10 @@
 		case 'CONTACT':
 			sendContactMessage();
 			break;
+
+		case 'ORDER':
+			postOrder();
+			break;
 	}
 
 	function loginUser()
@@ -56,6 +60,15 @@
 
 		$result = tryRegisterUser($name, $mail, $pass);
 
+		echo json_encode($result);
+	}
+
+	function postOrder()
+	{
+		$name = $_POST["name"];
+		$body = $_POST["body"];
+
+		$result = tryPostOrder($name, $body);
 		echo json_encode($result);
 	}
 

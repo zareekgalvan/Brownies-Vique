@@ -41,6 +41,43 @@
 		}
 	}
 
+	function tryPostOrder($name, $body)
+	{
+		$conn = connectionToDataBase();
+		if ($conn)
+		{
+			$sql = "SELECT name, id FROM User WHERE name ='$name'";
+			$result = $conn->query($sql);
+
+			if($result)
+			{
+				$row = $result->fetch_assoc();
+				$id = $row["id"];
+				$dat = date("Y/m/d");
+				$sql = "INSERT INTO Orders (userid, body, dateCom) VALUES ('$id', '$body', '$dat')";
+				$result = $conn->query($sql);
+				if ($result)
+				{
+					return array("status" => "POSTED");
+				}
+				else
+				{
+					return array("status" => "NOT POSTED");
+				}
+				
+			}
+			else
+			{
+				return array("status" => "SOMETHING WENT WRONG");
+			}
+		}
+		else 
+		{
+			$conn -> close();
+			return array("status" => "CONNECTION WITH DB WENT WRONG");
+		}
+	}
+
 	function tryPostCom($name, $body)
 	{
 		$conn = connectionToDataBase();
@@ -77,6 +114,7 @@
 			return array("status" => "CONNECTION WITH DB WENT WRONG");
 		}
 	}
+
 	function tryGetComments()
 	{
 		$conn = connectionToDataBase();
